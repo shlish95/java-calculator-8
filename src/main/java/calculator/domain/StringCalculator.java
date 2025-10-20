@@ -55,11 +55,19 @@ public final class StringCalculator {
             throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
         }
 
+        final int number;
+
         try {
-            return Integer.parseInt(token);
+            number = Integer.parseInt(token);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.: " + token);
         }
+
+        if (number <= 0) {
+            throw new IllegalArgumentException("양수만 허용됩니다.: " + token);
+        }
+
+        return number;
     }
 
     private static void ensureHasNumbers(String body) {
