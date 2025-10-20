@@ -24,38 +24,23 @@ public final class StringCalculator {
                 String delimiter = input.substring(2, realNl);
                 String body = input.substring(realNl + 1);
 
-                if (body.isEmpty()) {
-                    throw new IllegalArgumentException("덧셈할 숫자가 없습니다.");
-                }
+                ensureHasNumbers(body);
 
-                String[] tokens = body.split(Pattern.quote(delimiter));
-                int sum = 0;
-
-                for (String token : tokens) {
-                    sum += Integer.parseInt(token);
-                }
-
-                return sum;
+                return sumTokens(body.split(Pattern.quote(delimiter)));
             }
 
             String delimiter = input.substring(2, litNl);
             String body = input.substring(litNl + 2);
 
-            if (body.isEmpty()) {
-                throw new IllegalArgumentException("덧셈할 숫자가 없습니다.");
-            }
+            ensureHasNumbers(body);
 
-            String[] tokens = body.split(Pattern.quote(delimiter));
-            int sum = 0;
-
-            for (String token : tokens) {
-                sum += Integer.parseInt(token);
-            }
-
-            return sum;
+            return sumTokens(body.split(Pattern.quote(delimiter)));
         }
 
-        String[] tokens = input.split("[,:]");
+        return sumTokens(input.split("[,:]"));
+    }
+
+    private static int sumTokens(String[] tokens) {
         int sum = 0;
 
         for (String token : tokens) {
@@ -63,5 +48,11 @@ public final class StringCalculator {
         }
 
         return sum;
+    }
+
+    private static void ensureHasNumbers(String body) {
+        if (body == null || body.isEmpty()) {
+            throw new IllegalArgumentException("덧셈할 숫자가 없습니다.");
+        }
     }
 }
