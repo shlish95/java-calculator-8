@@ -44,10 +44,18 @@ public final class StringCalculator {
         int sum = 0;
 
         for (String token : tokens) {
-            sum += Integer.parseInt(token);
+            sum += parsePositive(token);
         }
 
         return sum;
+    }
+
+    private static int parsePositive(String token) {
+        try {
+            return Integer.parseInt(token);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력 가능합니다.: " + token);
+        }
     }
 
     private static void ensureHasNumbers(String body) {
