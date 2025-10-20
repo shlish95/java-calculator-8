@@ -29,6 +29,11 @@ class StringCalculatorTest {
     }
 
     @Test
+    void 커스텀_구분자_비어있으면_예외() {
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("//\n1,2,3"));
+    }
+
+    @Test
     void 숫자아님은_예외() {
         assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1,a"));
     }
