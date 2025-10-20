@@ -10,6 +10,13 @@ public final class StringCalculator {
             return 0;
         }
 
-        throw new UnsupportedOperationException();
+        String[] tokens = input.split("[,:]");
+        int sum = 0;
+
+        for (String token : tokens) {
+            sum += Integer.parseInt(token);
+        }
+
+        return sum;
     }
 }
