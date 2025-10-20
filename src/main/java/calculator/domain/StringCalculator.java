@@ -51,6 +51,10 @@ public final class StringCalculator {
     }
 
     private static int parsePositive(String token) {
+        if (token == null || token.isBlank()) {
+            throw new IllegalArgumentException("빈 값은 허용되지 않습니다.");
+        }
+
         try {
             return Integer.parseInt(token);
         } catch (NumberFormatException e) {
