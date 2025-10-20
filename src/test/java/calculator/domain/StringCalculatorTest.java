@@ -22,4 +22,9 @@ class StringCalculatorTest {
     void 커스텀_구분자_실제개행_지원한다() {
         assertEquals(6, StringCalculator.add("//;\n1;2;3"));
     }
+
+    @Test
+    void 커스텀_구분자_리터럴_역슬래시n_지원한다() {
+        assertEquals(1, StringCalculator.add("//;\\n1"));
+    }
 }
