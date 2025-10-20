@@ -38,4 +38,10 @@ class StringCalculatorTest {
         assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1,,2"));
         assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1, ,2"));
     }
+
+    @Test
+    void 영_혹은_음수는_예외() {
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("0,1"));
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("-1,2,3"));
+    }
 }
