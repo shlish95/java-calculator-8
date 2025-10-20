@@ -27,4 +27,9 @@ class StringCalculatorTest {
     void 커스텀_구분자_리터럴_역슬래시n_지원한다() {
         assertEquals(1, StringCalculator.add("//;\\n1"));
     }
+
+    @Test
+    void 숫자아님은_예외() {
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1,a"));
+    }
 }
