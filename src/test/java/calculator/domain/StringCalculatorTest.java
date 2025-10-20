@@ -32,4 +32,10 @@ class StringCalculatorTest {
     void 숫자아님은_예외() {
         assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1,a"));
     }
+
+    @Test
+    void 빈토큰_혹은_공백토큰은_예외() {
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1,,2"));
+        assertThrows(IllegalArgumentException.class, () -> StringCalculator.add("1, ,2"));
+    }
 }
